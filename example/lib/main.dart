@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 
 import 'package:scaffold_tab_bar/scaffold_tab_bar.dart';
 import 'package:scaffold_tab_bar_example/screens/index.dart';
