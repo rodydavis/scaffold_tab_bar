@@ -1,4 +1,5 @@
 .packages
+assets/FontManifest.json
 index.html
 main.dart.js
 packages/$sdk/_internal/ddc_sdk.sum
