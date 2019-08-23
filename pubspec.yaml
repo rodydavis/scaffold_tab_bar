@@ -1,0 +1,18 @@
+name: scaffold_tab_bar
+description: A package to make it really easy to have optional nested navigation per tab.
+version: 0.0.1
+author: Rody Davis <rody.davis.jr@gmail.com>
+homepage: https://github.com/AppleEducate/plugins
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
