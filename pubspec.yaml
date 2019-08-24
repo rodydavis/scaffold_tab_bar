@@ -1,6 +1,6 @@
 name: scaffold_tab_bar
 description: A package to make it really easy to have optional nested navigation per tab.
-version: 0.0.1
+version: 0.0.2
 author: Rody Davis <rody.davis.jr@gmail.com>
 homepage: https://github.com/AppleEducate/plugins
 

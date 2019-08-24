@@ -10,6 +10,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: ScaffoldTabBar(
+        routes: {
+          '/test': (_) => TestScreen(),
+        },
         children: [
           ScreenTab(
             screen: Screen1(),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ScaffoldTabBar extends StatefulWidget {
   const ScaffoldTabBar({
     Key key,
+    this.routes = const {},
     this.children,
     this.tabPopsToFirst = true,
     this.scaffoldKey,
@@ -12,6 +13,9 @@ class ScaffoldTabBar extends StatefulWidget {
     this.backgroundColor,
     this.bottomNavigationBarBackgroundColor,
     this.bottomNavigationBarType = BottomNavigationBarType.fixed,
+    this.floatingActionButton,
+    this.floatingActionButtonAnimator,
+    this.floatingActionButtonLocation,
   }) : super(key: key);
 
   final Color backgroundColor, bottomNavigationBarBackgroundColor;
@@ -20,6 +24,10 @@ class ScaffoldTabBar extends StatefulWidget {
   final Widget drawer, endDrawer;
   final List<Widget> persistentFooterButtons;
   final GlobalKey<ScaffoldState> scaffoldKey;
+  final FloatingActionButton floatingActionButton;
+  final FloatingActionButtonAnimator floatingActionButtonAnimator;
+  final FloatingActionButtonLocation floatingActionButtonLocation;
+  final Map<String, WidgetBuilder> routes;
 
   /// If tab is currently selected, tapping again will pop to first page
   final bool tabPopsToFirst;
@@ -75,10 +83,18 @@ class _ScaffoldTabBarState extends State<ScaffoldTabBar> {
     for (int i = 0; i < _screens.length; i++) {
       _children.add(Navigator(
         key: _keys[i],
-        onGenerateRoute: (route) => MaterialPageRoute(
-          settings: route,
-          builder: (context) => _screens[i].screen,
-        ),
+        onGenerateRoute: (settings) {
+          if (widget.routes.containsKey(settings.name)) {
+            return MaterialPageRoute(
+              settings: settings,
+              builder: widget.routes[settings.name],
+            );
+          }
+          return MaterialPageRoute(
+            settings: settings,
+            builder: (context) => _screens[i].screen,
+          );
+        },
       ));
     }
     return Scaffold(
@@ -87,6 +103,9 @@ class _ScaffoldTabBarState extends State<ScaffoldTabBar> {
       drawer: widget?.drawer,
       endDrawer: widget?.endDrawer,
       persistentFooterButtons: widget?.persistentFooterButtons,
+      floatingActionButton: widget?.floatingActionButton,
+      floatingActionButtonAnimator: widget?.floatingActionButtonAnimator,
+      floatingActionButtonLocation: widget?.floatingActionButtonLocation,
       body: IndexedStack(
         index: _currentIndex,
         children: _children,

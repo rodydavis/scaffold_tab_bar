@@ -10,6 +10,10 @@
 * Tabs are inside of a [IndexdStack] so tabs are built once
 * Optional navigation back to first screen when tab is double tapped
 
+## Demo
+
+You can try a demo [here](https://appleeducate.github.io/scaffold_tab_bar/).
+
 ## Example
 
 ```dart

@@ -13,6 +13,7 @@ class Screen1 extends StatelessWidget {
           onPressed: () {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (_) => Screen1()));
+            // Navigator.pushNamed(context, '/test');
           },
         ),
       ),
